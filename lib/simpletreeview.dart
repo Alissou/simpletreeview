@@ -11,7 +11,7 @@ class TreeView extends InheritedWidget {
   TreeView({
     Key? key,
     this.getWidget,
-    @required List<Object>? children,
+    required List<Object>? children,
     this.onSelect,
   })  : this.children = children,
         super(
@@ -68,8 +68,8 @@ class TreeViewChild extends StatefulWidget {
   Function(Object?)? onSelect;
 
   TreeViewChild(
-      {@required this.parent,
-      @required this.children,
+      {required this.parent,
+      required this.children,
       this.onTap,
       Key? key,
       this.data,

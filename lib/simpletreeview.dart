@@ -38,7 +38,7 @@ class TreeView extends InheritedWidget {
 class _TreeViewData extends StatelessWidget {
   final List<dynamic>? children;
   final Widget Function(dynamic)? getWidget;
-  final Function(Object?)? onSelect;
+  final Function(dynamic?)? onSelect;
 
   const _TreeViewData({this.children, this.getWidget, this.onSelect});
 
@@ -60,11 +60,11 @@ class _TreeViewData extends StatelessWidget {
 
 class TreeViewChild extends StatefulWidget {
   final Widget? parent;
-  final Future<List<Object>>? children;
+  final Future<List<dynamic>>? children;
   final VoidCallback? onTap;
-  Object? data;
-  Widget Function(Object)? getWidget;
-  Function(Object?)? onSelect;
+  dynamic data;
+  Widget Function(dynamic)? getWidget;
+  Function(dynamic)? onSelect;
 
   TreeViewChild(
       {required this.parent,
@@ -79,7 +79,7 @@ class TreeViewChild extends StatefulWidget {
     assert(children != null);
   }
 
-  List<Widget> getChildren(List<Object> data) {
+  List<Widget> getChildren(List<dynamic> data) {
     List<Widget> ret = [];
     for (var e in data) {
       var w = getWidget!(e);
@@ -98,7 +98,7 @@ class TreeViewChild extends StatefulWidget {
   TreeViewChild copyWith(
     TreeViewChild source, {
     Widget? parent,
-    Future<List<Object>>? children,
+    Future<List<dynamic>>? children,
     VoidCallback? onTap,
   }) {
     return TreeViewChild(
@@ -135,7 +135,7 @@ class TreeViewChildState extends State<TreeViewChild> {
           AnimatedContainer(
             duration: Duration(milliseconds: 500),
             child: isExpanded == true
-                ? FutureBuilder<List<Object>>(
+                ? FutureBuilder<List<dynamic>>(
                     future: widget.children,
                     builder: (context, snapshot) {
                       if (!snapshot.hasData || snapshot.data!.length == 0) {

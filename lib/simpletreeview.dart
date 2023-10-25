@@ -1,17 +1,16 @@
 library simpletreeview;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 class TreeView extends InheritedWidget {
-  final List<Object>? children;
-  final Widget Function(Object)? getWidget;
-  final Function(Object?)? onSelect;
+  final List<dynamic>? children;
+  final Widget Function(dynamic)? getWidget;
+  final Function(dynamic?)? onSelect;
 
   TreeView({
     Key? key,
     this.getWidget,
-    required List<Object>? children,
+    required List<dynamic>? children,
     this.onSelect,
   })  : this.children = children,
         super(
@@ -37,8 +36,8 @@ class TreeView extends InheritedWidget {
 }
 
 class _TreeViewData extends StatelessWidget {
-  final List<Object>? children;
-  final Widget Function(Object)? getWidget;
+  final List<dynamic>? children;
+  final Widget Function(dynamic)? getWidget;
   final Function(Object?)? onSelect;
 
   const _TreeViewData({this.children, this.getWidget, this.onSelect});
